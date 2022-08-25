@@ -163,10 +163,10 @@ components:
           type: number
           format: double
           example: 10.21
-        orderItems:
+        orderItemModel:
           type: array
           xml:
-            name: orderItemsModel
+            name: orderItemModel
             wrapped: true
           items:
             $ref: '#/components/schemas/OrderItemModel'
