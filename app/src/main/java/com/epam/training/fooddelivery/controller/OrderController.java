@@ -4,7 +4,9 @@ import com.epam.training.fooddelivery.api.OrderserviceApi;
 import com.epam.training.fooddelivery.converter.CartModelConverter;
 import com.epam.training.fooddelivery.converter.OrderListConverter;
 import com.epam.training.fooddelivery.converter.SingleOrderModelConverter;
+import com.epam.training.fooddelivery.domain.Cart;
 import com.epam.training.fooddelivery.domain.Order;
+import com.epam.training.fooddelivery.exception.LowBalanceException;
 import com.epam.training.fooddelivery.model.CartModel;
 import com.epam.training.fooddelivery.model.OrderModel;
 import com.epam.training.fooddelivery.service.CustomerService;
@@ -12,6 +14,7 @@ import com.epam.training.fooddelivery.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -33,7 +36,7 @@ public class OrderController implements OrderserviceApi {
     }
 
     @Override
-    public ResponseEntity<OrderModel> createOrder(CartModel cartModel) {
+    public ResponseEntity<OrderModel> createOrder(@RequestBody CartModel cartModel) {
         return null;
     }
 
