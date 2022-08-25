@@ -132,7 +132,7 @@ components:
         orderItemModel:
           type: array
           xml:
-            name: orderItemsModel
+            name: orderItemModel
             wrapped: true
           items:
             $ref: '#/components/schemas/OrderItemModel'

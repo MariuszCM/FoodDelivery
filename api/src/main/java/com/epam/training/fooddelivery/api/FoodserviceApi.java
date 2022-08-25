@@ -20,7 +20,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-25T23:05:28.613204700+02:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-25T23:23:26.741787800+02:00[Europe/Warsaw]")
 @Validated
 @Api(value = "foodservice", description = "the foodservice API")
 public interface FoodserviceApi {
