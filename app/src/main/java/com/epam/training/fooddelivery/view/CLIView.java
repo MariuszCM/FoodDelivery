@@ -5,6 +5,7 @@ import com.epam.training.fooddelivery.aspect.EnableExecutionTimeLogging;
 import com.epam.training.fooddelivery.aspect.EnableReturnValueLogging;
 import com.epam.training.fooddelivery.domain.*;
 import com.epam.training.fooddelivery.repository.FoodRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.format.DateTimeFormatter;
@@ -17,6 +18,7 @@ import java.util.Scanner;
 public class CLIView implements View {
 
     private static final Scanner scanner = new Scanner(System.in);
+    @Autowired
     private FoodRepository foodRepository;
 
     @EnableExecutionTimeLogging

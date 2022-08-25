@@ -2,12 +2,12 @@ package com.epam.training.fooddelivery.service;
 
 import com.epam.training.fooddelivery.domain.Customer;
 import com.epam.training.fooddelivery.domain.User;
+import com.epam.training.fooddelivery.exception.AuthenticationException;
 import com.epam.training.fooddelivery.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
 
 
 @AllArgsConstructor

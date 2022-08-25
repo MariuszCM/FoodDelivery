@@ -2,6 +2,8 @@ package com.epam.training.fooddelivery.service;
 
 import com.epam.training.fooddelivery.domain.Customer;
 import com.epam.training.fooddelivery.domain.Order;
+import com.epam.training.fooddelivery.domain.OrderItem;
+import com.epam.training.fooddelivery.exception.LowBalanceException;
 import com.epam.training.fooddelivery.repository.CustomerRepository;
 import com.epam.training.fooddelivery.repository.OrderItemRepository;
 import com.epam.training.fooddelivery.repository.OrderRepository;
@@ -11,6 +13,10 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 @Service
 @AllArgsConstructor
@@ -56,5 +62,24 @@ public class DefaultOrderService implements OrderService {
                     + customer.getBalance() + " EUR. We do not empty your cart, " +
                     "please remove some of the items.");
         }
+    }
+    //TODO Rebuild
+    @Override
+    public Order findOrderById(Long id){
+        Optional<Order> order = orderRepository.findById(id);
+        List<OrderItem> orderItems = orderItemRepository.findAllByOrder_Id(id).orElse(null);
+        order.ifPresent(orderLambda -> orderLambda.setOrderItems(orderItems));
+        return order.orElse(null);
+    }
+
+    @Override
+    public List<Order> findAllOrdersByCustomerId(Long customerId) {
+        List<Order> orderList = orderRepository.findAllOrdersByCustomerId(customerId).orElse(new ArrayList<>());
+        for (Order order : orderList) {
+            Long orderId = order.getId();
+            List<OrderItem> orderItems = orderItemRepository.findAllByOrder_Id(orderId).orElse(null);
+            order.setOrderItems(orderItems);
+        }
+        return orderList;
     }
 }

@@ -3,11 +3,15 @@ package com.epam.training.fooddelivery;
 import com.epam.training.fooddelivery.domain.Customer;
 import com.epam.training.fooddelivery.domain.Food;
 import com.epam.training.fooddelivery.domain.Order;
+import com.epam.training.fooddelivery.exception.AuthenticationException;
+import com.epam.training.fooddelivery.exception.LowBalanceException;
 import com.epam.training.fooddelivery.service.*;
 import com.epam.training.fooddelivery.view.View;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 
 @Component
@@ -22,36 +26,39 @@ public class FoodDelivery implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Customer customer = new Customer();
-        boolean isAuthenticated = false;
-        try {
-            customer = customerService.authenticate(view.readCredentials());
-            isAuthenticated = true;
-        } catch (AuthenticationException e) {
-            view.printErrorMessage(e.getMessage());
-        }
-        if (isAuthenticated) {
-            view.printWelcomeMessage(customer);
-            boolean decision;
-            Order order = null;
-            do {
-                view.printAllFoods(foodService.listAllFood());
-                Food food = view.selectFood(foodService.listAllFood());
-                int foodPieces = view.readPieces();
-                cartService.updateCart(customer, food, foodPieces);
-                view.printAddedToCart(food, foodPieces);
-                view.printCart(customer.getCart());
-                decision = view.promptOrder();
-                if (decision) {
-                    try {
-                        order = orderService.createOrder(customer);
-                    } catch (LowBalanceException e) {
-                        decision = false;
+        while(true){
+            Customer customer = new Customer();
+            boolean isAuthenticated = false;
+            try {
+                customer = customerService.authenticate(view.readCredentials());
+                isAuthenticated = true;
+            } catch (AuthenticationException e) {
+                view.printErrorMessage(e.getMessage());
+            }
+            if (isAuthenticated) {
+                view.printWelcomeMessage(customer);
+                boolean decision;
+                Order order = null;
+                do {
+                    view.printAllFoods(foodService.listAllFood());
+                    Food food = view.selectFood(foodService.listAllFood());
+                    int foodPieces = view.readPieces();
+                    cartService.updateCart(customer, food, foodPieces);
+                    view.printAddedToCart(food, foodPieces);
+                    view.printCart(customer.getCart());
+                    decision = view.promptOrder();
+                    if (decision) {
+                        try {
+                            order = orderService.createOrder(customer);
+                        } catch (LowBalanceException e) {
+                            decision = false;
+                        }
                     }
-                }
-            } while (!decision);
-            view.printConfirmOrder(order);
+                } while (!decision);
+                view.printConfirmOrder(order);
+            }
         }
+
 
     }
 
