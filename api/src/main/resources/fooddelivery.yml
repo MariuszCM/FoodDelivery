@@ -129,7 +129,7 @@ components:
         timestampCreated:
           type: string
           format: date
-        orderItems:
+        orderItemsModel:
           type: array
           xml:
             name: orderItemsModel

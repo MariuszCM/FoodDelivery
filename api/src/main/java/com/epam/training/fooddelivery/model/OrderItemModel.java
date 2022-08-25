@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 /**
  * OrderItemModel
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-25T20:35:02.660236600+02:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-25T23:05:28.613204700+02:00[Europe/Warsaw]")
 public class OrderItemModel   {
   @JsonProperty("id")
   private Long id;
