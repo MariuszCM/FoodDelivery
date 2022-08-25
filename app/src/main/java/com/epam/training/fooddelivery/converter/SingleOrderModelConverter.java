@@ -21,7 +21,7 @@ public class SingleOrderModelConverter implements Converter<Order, OrderModel> {
         orderModel.setId(order.getId());
         orderModel.setPrice(order.getPrice().doubleValue());
         orderModel.setTimestampCreated(order.getTimestampCreated().toLocalDate());
-        orderModel.setOrderItemModel(orderItemListConverter.convert(order.getOrderItems()));
+        orderModel.setOrderItemModels(orderItemListConverter.convert(order.getOrderItems()));
         return orderModel;
     }
 }

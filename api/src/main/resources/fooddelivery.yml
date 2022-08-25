@@ -129,10 +129,10 @@ components:
         timestampCreated:
           type: string
           format: date
-        orderItemModel:
+        orderItemModels:
           type: array
           xml:
-            name: orderItemModel
+            name: orderItemModels
             wrapped: true
           items:
             $ref: '#/components/schemas/OrderItemModel'

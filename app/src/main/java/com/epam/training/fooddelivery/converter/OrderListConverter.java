@@ -24,7 +24,7 @@ public class OrderListConverter implements Converter<List<Order>, List<OrderMode
             orderModel.setId(order.getId());
             orderModel.setPrice(order.getPrice().doubleValue());
             orderModel.setTimestampCreated(order.getTimestampCreated().toLocalDate());
-            orderModel.setOrderItemModel(orderItemListConverter.convert(order.getOrderItems()));
+            orderModel.setOrderItemModels(orderItemListConverter.convert(order.getOrderItems()));
             orderModels.add(orderModel);
         }
         return orderModels;

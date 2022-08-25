@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
 /**
  * OrderModel
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-25T23:23:26.741787800+02:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-25T23:29:15.611086100+02:00[Europe/Warsaw]")
 public class OrderModel   {
   @JsonProperty("id")
   private Long id;
@@ -28,9 +28,9 @@ public class OrderModel   {
   @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
   private LocalDate timestampCreated;
 
-  @JsonProperty("orderItemModel")
+  @JsonProperty("orderItemModels")
   @Valid
-  private List<OrderItemModel> orderItemModel = null;
+  private List<OrderItemModel> orderItemModels = null;
 
   public OrderModel id(Long id) {
     this.id = id;
@@ -93,33 +93,33 @@ public class OrderModel   {
     this.timestampCreated = timestampCreated;
   }
 
-  public OrderModel orderItemModel(List<OrderItemModel> orderItemModel) {
-    this.orderItemModel = orderItemModel;
+  public OrderModel orderItemModels(List<OrderItemModel> orderItemModels) {
+    this.orderItemModels = orderItemModels;
     return this;
   }
 
-  public OrderModel addOrderItemModelItem(OrderItemModel orderItemModelItem) {
-    if (this.orderItemModel == null) {
-      this.orderItemModel = new ArrayList<>();
+  public OrderModel addOrderItemModelsItem(OrderItemModel orderItemModelsItem) {
+    if (this.orderItemModels == null) {
+      this.orderItemModels = new ArrayList<>();
     }
-    this.orderItemModel.add(orderItemModelItem);
+    this.orderItemModels.add(orderItemModelsItem);
     return this;
   }
 
   /**
-   * Get orderItemModel
-   * @return orderItemModel
+   * Get orderItemModels
+   * @return orderItemModels
   */
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public List<OrderItemModel> getOrderItemModel() {
-    return orderItemModel;
+  public List<OrderItemModel> getOrderItemModels() {
+    return orderItemModels;
   }
 
-  public void setOrderItemModel(List<OrderItemModel> orderItemModel) {
-    this.orderItemModel = orderItemModel;
+  public void setOrderItemModels(List<OrderItemModel> orderItemModels) {
+    this.orderItemModels = orderItemModels;
   }
 
 
@@ -135,12 +135,12 @@ public class OrderModel   {
     return Objects.equals(this.id, orderModel.id) &&
         Objects.equals(this.price, orderModel.price) &&
         Objects.equals(this.timestampCreated, orderModel.timestampCreated) &&
-        Objects.equals(this.orderItemModel, orderModel.orderItemModel);
+        Objects.equals(this.orderItemModels, orderModel.orderItemModels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, price, timestampCreated, orderItemModel);
+    return Objects.hash(id, price, timestampCreated, orderItemModels);
   }
 
   @Override
@@ -151,7 +151,7 @@ public class OrderModel   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    timestampCreated: ").append(toIndentedString(timestampCreated)).append("\n");
-    sb.append("    orderItemModel: ").append(toIndentedString(orderItemModel)).append("\n");
+    sb.append("    orderItemModels: ").append(toIndentedString(orderItemModels)).append("\n");
     sb.append("}");
     return sb.toString();
   }
