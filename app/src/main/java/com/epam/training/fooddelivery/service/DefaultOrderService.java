@@ -30,8 +30,8 @@ public class DefaultOrderService implements OrderService {
     @Override
     public Order createOrder(Long customerId, Cart cart) {
         Customer customer = customerRepository.getById(customerId);
-        checkExceptions(customer);
         customer.setCart(cart);
+        checkExceptions(customer);
         LocalDateTime currentDate = LocalDateTime.now();
         Order order = new Order(customer, customer.getCart().getPrice(),
                 currentDate, customer.getCart().getOrderItems());
