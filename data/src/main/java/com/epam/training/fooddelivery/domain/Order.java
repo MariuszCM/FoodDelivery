@@ -23,7 +23,7 @@ public class Order {
     private Customer customer;
     private BigDecimal price;
     private LocalDateTime timestampCreated;
-    @Transient
+    @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems;
 
     public Order(Customer customer, BigDecimal price, LocalDateTime timestampCreated, List<OrderItem> orderItems) {
