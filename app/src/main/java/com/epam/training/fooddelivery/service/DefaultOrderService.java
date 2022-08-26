@@ -35,7 +35,7 @@ public class DefaultOrderService implements OrderService {
         LocalDateTime currentDate = LocalDateTime.now();
         Order order = new Order(customer, customer.getCart().getPrice(),
                 currentDate, customer.getCart().getOrderItems());
-        customer.getOrders().add(order);
+//        customer.getOrders().add(order);
 
         addOrderItemsToRepository(customer, order);
         orderRepository.save(order);
