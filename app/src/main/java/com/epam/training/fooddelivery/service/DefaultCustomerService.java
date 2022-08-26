@@ -26,6 +26,11 @@ public class DefaultCustomerService implements CustomerService {
 
     @Override
     public Customer findByEmailAndPassword(String email, String password) {
-        return customerRepository.findByPasswordAndEmail(password, email).get();
+        return customerRepository.findByPasswordAndEmail(password, email).orElseThrow(() -> new AuthenticationException("Wrong credentials"));
+    }
+
+    @Override
+    public Customer findCustomerByEmail(String email) {
+        return customerRepository.findCustomerByEmail(email).orElseThrow(() -> new AuthenticationException("Wrong credentials"));
     }
 }

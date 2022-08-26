@@ -80,8 +80,7 @@ public class OrderController implements OrderserviceApi {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String customerEmail = userDetails.getUsername();
-        String customerPassword = userDetails.getPassword();
-        Long customerId = customerService.findByEmailAndPassword(customerEmail, customerPassword).getId();
-        return customerId;
+        Long id = customerService.findCustomerByEmail(customerEmail).getId();
+        return id;
     }
 }

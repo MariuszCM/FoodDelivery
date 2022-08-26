@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CustomerService {
     Customer authenticate(User user);
     Customer findByEmailAndPassword(String email, String password);
+    Customer findCustomerByEmail(String email);
 }
