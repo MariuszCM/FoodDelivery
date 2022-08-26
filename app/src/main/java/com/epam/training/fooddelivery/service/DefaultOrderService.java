@@ -1,5 +1,6 @@
 package com.epam.training.fooddelivery.service;
 
+import com.epam.training.fooddelivery.domain.Cart;
 import com.epam.training.fooddelivery.domain.Customer;
 import com.epam.training.fooddelivery.domain.Order;
 import com.epam.training.fooddelivery.domain.OrderItem;
@@ -27,9 +28,10 @@ public class DefaultOrderService implements OrderService {
 
     @Transactional
     @Override
-    public Order createOrder(Customer customer) {
+    public Order createOrder(Long customerId, Cart cart) {
+        Customer customer = customerRepository.getById(customerId);
         checkExceptions(customer);
-
+        customer.setCart(cart);
         LocalDateTime currentDate = LocalDateTime.now();
         Order order = new Order(customer, customer.getCart().getPrice(),
                 currentDate, customer.getCart().getOrderItems());

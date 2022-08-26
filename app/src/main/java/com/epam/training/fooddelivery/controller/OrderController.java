@@ -4,13 +4,18 @@ import com.epam.training.fooddelivery.api.OrderserviceApi;
 import com.epam.training.fooddelivery.converter.CartModelConverter;
 import com.epam.training.fooddelivery.converter.OrderListConverter;
 import com.epam.training.fooddelivery.converter.SingleOrderModelConverter;
+import com.epam.training.fooddelivery.domain.Cart;
 import com.epam.training.fooddelivery.domain.Order;
+import com.epam.training.fooddelivery.exception.LowBalanceException;
 import com.epam.training.fooddelivery.model.CartModel;
 import com.epam.training.fooddelivery.model.OrderModel;
 import com.epam.training.fooddelivery.service.CustomerService;
 import com.epam.training.fooddelivery.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -35,7 +40,18 @@ public class OrderController implements OrderserviceApi {
 
     @Override
     public ResponseEntity<OrderModel> createOrder(@RequestBody CartModel cartModel) {
-        return null;
+        if (cartModel.getOrderItemModel().isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Cart cart = cartModelConverter.convert(cartModel);
+        Long authenticatedCustomersId = getAuthenticatedCustomersId();
+        try {
+            Order order = orderService.createOrder(authenticatedCustomersId, cart);
+            OrderModel orderModel = singleOrderModelConverter.convert(order);
+            return new ResponseEntity<>(orderModel, HttpStatus.OK);
+        } catch (LowBalanceException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
@@ -54,5 +70,14 @@ public class OrderController implements OrderserviceApi {
         List<Order> allOrdersByCustomerId = orderService.findAllOrdersByCustomerId(1L);
         List<OrderModel> orderModels = orderListConverter.convert(allOrdersByCustomerId);
         return new ResponseEntity<>(orderModels, HttpStatus.OK);
+    }
+
+    private Long getAuthenticatedCustomersId() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String customerEmail = userDetails.getUsername();
+        String customerPassword = userDetails.getPassword();
+        Long customerId = customerService.findByEmailAndPassword(customerEmail, customerPassword).getId();
+        return customerId;
     }
 }

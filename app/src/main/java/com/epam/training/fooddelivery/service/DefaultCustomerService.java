@@ -23,4 +23,9 @@ public class DefaultCustomerService implements CustomerService {
                     throw new AuthenticationException("User not found!\n");
                 });
     }
+
+    @Override
+    public Customer findByEmailAndPassword(String email, String password) {
+        return customerRepository.findByPasswordAndEmail(password, email).get();
+    }
 }
