@@ -56,9 +56,12 @@ public class OrderController implements OrderserviceApi {
 
     @Override
     public ResponseEntity<OrderModel> getOrderById(Long orderId) {
+        Long authenticatedCustomersId = getAuthenticatedCustomersId();
         Order orderById = orderService.findOrderById(orderId);
         if (orderById == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else if (!orderById.getCustomer().getId().equals(authenticatedCustomersId)) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         } else {
             OrderModel orderModel = singleOrderModelConverter.convert(orderById);
             return new ResponseEntity<>(orderModel, HttpStatus.OK);
@@ -67,7 +70,8 @@ public class OrderController implements OrderserviceApi {
 
     @Override
     public ResponseEntity<List<OrderModel>> listAllOrders() {
-        List<Order> allOrdersByCustomerId = orderService.findAllOrdersByCustomerId(1L);
+        Long authenticatedCustomersId = getAuthenticatedCustomersId();
+        List<Order> allOrdersByCustomerId = orderService.findAllOrdersByCustomerId(authenticatedCustomersId);
         List<OrderModel> orderModels = orderListConverter.convert(allOrdersByCustomerId);
         return new ResponseEntity<>(orderModels, HttpStatus.OK);
     }
