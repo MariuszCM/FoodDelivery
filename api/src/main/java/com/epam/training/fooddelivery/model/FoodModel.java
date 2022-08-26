@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 /**
  * FoodModel
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-25T23:29:15.611086100+02:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-26T23:41:58.811663200+02:00[Europe/Warsaw]")
 public class FoodModel   {
   @JsonProperty("id")
   private Long id;

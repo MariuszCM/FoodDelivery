@@ -18,7 +18,7 @@ public class CartModelConverter implements Converter<CartModel, Cart> {
     @Override
     public Cart convert(CartModel cartModel) {
         Cart cart = new Cart();
-        cart.setOrderItems(orderItemModelListConverter.convert(cartModel.getOrderItemModel()));
+        cart.setOrderItems(orderItemModelListConverter.convert(cartModel.getOrderItemModels()));
         cart.setPrice(new BigDecimal(cartModel.getPrice()));
         return cart;
     }

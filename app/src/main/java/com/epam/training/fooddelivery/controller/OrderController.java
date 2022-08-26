@@ -40,7 +40,7 @@ public class OrderController implements OrderserviceApi {
 
     @Override
     public ResponseEntity<OrderModel> createOrder(@RequestBody CartModel cartModel) {
-        if (cartModel.getOrderItemModel().isEmpty()) {
+        if (cartModel.getOrderItemModels().isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Cart cart = cartModelConverter.convert(cartModel);
@@ -55,9 +55,9 @@ public class OrderController implements OrderserviceApi {
     }
 
     @Override
-    public ResponseEntity<OrderModel> getOrderById(Long orderId) {
+    public ResponseEntity<OrderModel> getOrderById(Long id) {
         Long authenticatedCustomersId = getAuthenticatedCustomersId();
-        Order orderById = orderService.findOrderById(orderId);
+        Order orderById = orderService.findOrderById(id);
         if (orderById == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else if (!orderById.getCustomer().getId().equals(authenticatedCustomersId)) {

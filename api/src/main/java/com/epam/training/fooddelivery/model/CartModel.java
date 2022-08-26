@@ -15,14 +15,14 @@ import javax.validation.constraints.*;
 /**
  * CartModel
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-25T23:29:15.611086100+02:00[Europe/Warsaw]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-08-26T23:41:58.811663200+02:00[Europe/Warsaw]")
 public class CartModel   {
   @JsonProperty("price")
   private Double price;
 
-  @JsonProperty("orderItemModel")
+  @JsonProperty("orderItemModels")
   @Valid
-  private List<OrderItemModel> orderItemModel = null;
+  private List<OrderItemModel> orderItemModels = null;
 
   public CartModel price(Double price) {
     this.price = price;
@@ -44,33 +44,33 @@ public class CartModel   {
     this.price = price;
   }
 
-  public CartModel orderItemModel(List<OrderItemModel> orderItemModel) {
-    this.orderItemModel = orderItemModel;
+  public CartModel orderItemModels(List<OrderItemModel> orderItemModels) {
+    this.orderItemModels = orderItemModels;
     return this;
   }
 
-  public CartModel addOrderItemModelItem(OrderItemModel orderItemModelItem) {
-    if (this.orderItemModel == null) {
-      this.orderItemModel = new ArrayList<>();
+  public CartModel addOrderItemModelsItem(OrderItemModel orderItemModelsItem) {
+    if (this.orderItemModels == null) {
+      this.orderItemModels = new ArrayList<>();
     }
-    this.orderItemModel.add(orderItemModelItem);
+    this.orderItemModels.add(orderItemModelsItem);
     return this;
   }
 
   /**
-   * Get orderItemModel
-   * @return orderItemModel
+   * Get orderItemModels
+   * @return orderItemModels
   */
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public List<OrderItemModel> getOrderItemModel() {
-    return orderItemModel;
+  public List<OrderItemModel> getOrderItemModels() {
+    return orderItemModels;
   }
 
-  public void setOrderItemModel(List<OrderItemModel> orderItemModel) {
-    this.orderItemModel = orderItemModel;
+  public void setOrderItemModels(List<OrderItemModel> orderItemModels) {
+    this.orderItemModels = orderItemModels;
   }
 
 
@@ -84,12 +84,12 @@ public class CartModel   {
     }
     CartModel cartModel = (CartModel) o;
     return Objects.equals(this.price, cartModel.price) &&
-        Objects.equals(this.orderItemModel, cartModel.orderItemModel);
+        Objects.equals(this.orderItemModels, cartModel.orderItemModels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(price, orderItemModel);
+    return Objects.hash(price, orderItemModels);
   }
 
   @Override
@@ -98,7 +98,7 @@ public class CartModel   {
     sb.append("class CartModel {\n");
     
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
-    sb.append("    orderItemModel: ").append(toIndentedString(orderItemModel)).append("\n");
+    sb.append("    orderItemModels: ").append(toIndentedString(orderItemModels)).append("\n");
     sb.append("}");
     return sb.toString();
   }
