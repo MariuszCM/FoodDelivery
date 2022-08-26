@@ -19,10 +19,10 @@ public class OrderItem {
     private Long id;
     private int pieces;
     private BigDecimal price;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "food_id")
     private Food food;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private Order order;
 

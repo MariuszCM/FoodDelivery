@@ -18,12 +18,12 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
     private BigDecimal price;
     private LocalDateTime timestampCreated;
-    @OneToMany(mappedBy = "order")
+    @Transient
     private List<OrderItem> orderItems;
 
     public Order(Customer customer, BigDecimal price, LocalDateTime timestampCreated, List<OrderItem> orderItems) {
