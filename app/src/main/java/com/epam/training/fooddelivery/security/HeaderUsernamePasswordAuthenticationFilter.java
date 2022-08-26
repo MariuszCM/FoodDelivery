@@ -14,6 +14,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Enumeration;
+
 
 public class HeaderUsernamePasswordAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
@@ -24,7 +27,10 @@ public class HeaderUsernamePasswordAuthenticationFilter extends AbstractAuthenti
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        String email = request.getHeader("email");
+        String email = request.getHeader(new String("email"));
+        String email2 = request.getQueryString();
+        Enumeration<String> email1 = request.getHeaderNames();
+        Collection<String> email5 = response.getHeaderNames();
         String password = request.getHeader("password");
         if(email == null || password == null){
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
