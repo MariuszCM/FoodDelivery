@@ -15,8 +15,9 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "_ORDER")
 public class Order {
+    @TableGenerator(name = "Address_Gen", initialValue = -1)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "Address_Gen")
     private Long id;
     @ManyToOne()
     @JoinColumn(name = "customer_id")
