@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "_ORDER")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne()
     @JoinColumn(name = "customer_id")
