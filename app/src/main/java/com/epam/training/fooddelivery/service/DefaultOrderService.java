@@ -37,8 +37,8 @@ public class DefaultOrderService implements OrderService {
                 currentDate, customer.getCart().getOrderItems());
 //        customer.getOrders().add(order);
 
-        addOrderItemsToRepository(customer, order);
         orderRepository.save(order);
+        addOrderItemsToRepository(customer, order);
 
         updateCustomerBalance(customer, order);
         return order;
