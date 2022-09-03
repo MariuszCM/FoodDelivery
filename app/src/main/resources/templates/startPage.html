@@ -17,23 +17,24 @@
 
  <main>
 <!-- DEMO HTML -->
-     <div style="position: absolute; top: 15px; right: 200px; width: 100px; text-align:right;">
-         Balance:&nbsp;&#x24;<span th:text="${userBalance}"></span>
-     </div>
+
 <div class="container bg-white">
     <nav class="navbar navbar-expand-md navbar-light bg-white">
+        <div style="position: absolute; top: -30px; right: 130px; width: 0; text-align:right;">
+            Balance:&nbsp;&#x24;<span th:text="${userBalance}"></span>
+        </div>
         <div class="container-fluid p-0"> <a class="navbar-brand text-uppercase fw-800" href="/main"><span th:text="Hello " class="border-red pe-2"></span><span th:text="${userName}" class="border-red pe-2"></span></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNav" aria-controls="myNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button>
 
             <div class="collapse navbar-collapse" id="myNav">
-                <div class="navbar-nav ms-auto"> <a class="nav-link active" aria-current="page" href="/main">Menu</a><a class="nav-link" href="/orderservice/orders">My orders</a> <a class="nav-link" href="#">My profile</a> <a class="nav-link" href="#">Contact</a> </div>
+                <div class="navbar-nav ms-auto"> <a class="nav-link active" aria-current="page" href="/main">Menu</a><a class="nav-link" href="/orderservice/orders">My orders</a> <a class="nav-link" href="#">My profile</a> <a class="nav-link" href="#">Contact</a><a class="nav-link" href="/logout">Log out</a> </div>
             </div>
         </div>
     </nav>
     <div class="row">
         <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
-            <div class="product"> <img src="https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/tortilla-z-kurczakiem-00.jpg" alt="">
+            <div class="product"> <img th:src="@{/images/tortilla.png}">
                 <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
-                    <a href="/main/description/1" style="text-decoration:none; color:black;"><li class="icon"><span class="fas fa-expand-arrows-alt"></span></li></a>
+                    <a href="/main/description/3" style="text-decoration:none; color:black;"><li class="icon"><span class="fas fa-expand-arrows-alt"></span></li></a>
                     <li class="icon"><span class="fas fa-shopping-bag"></span></li>
                 </ul>
             </div>
@@ -43,9 +44,9 @@
             <div class="price">$ 60.0</div>
         </div>
         <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
-            <div class="product"> <img src="https://www.przyslijprzepis.pl/media/cache/big/uploads/media/default/0001/18/7b0d2232eb587ed9a1ea93d5a7e6c6d2cf246320.jpeg" alt="">
+            <div class="product"> <img th:src="@{/images/gazpacho.png}"/>
                 <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
-                    <a href="/dom" style="text-decoration:none; color:black;"><li class="icon"><span class="fas fa-expand-arrows-alt"></span></li></a>
+                    <a href="/main/description/4" style="text-decoration:none; color:black;"><li class="icon"><span class="fas fa-expand-arrows-alt"></span></li></a>
                     <li class="icon"><span class="fas fa-shopping-bag"></span></li>
                 </ul>
             </div>
@@ -55,9 +56,9 @@
             <div class="price">$ 55.0</div>
         </div>
         <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
-            <div class="product"> <img  src="https://static.fajnegotowanie.pl/media/uploads/media_image/original/przepis/3085/paella-z-owocami-morza.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            <div class="product"> <img  th:src="@{/images/paella.png}" alt="">
                 <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
-                    <a href="/dom" style="text-decoration:none; color:black;"><li class="icon"><span class="fas fa-expand-arrows-alt"></span></li></a>
+                    <a href="/main/description/2" style="text-decoration:none; color:black;"><li class="icon"><span class="fas fa-expand-arrows-alt"></span></li></a>
                     <li class="icon"><span class="fas fa-shopping-bag"></span></li>
                 </ul>
             </div>
@@ -67,9 +68,9 @@
             <div class="price">$ 70.0</div>
         </div>
         <div class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
-            <div class="product"> <img src="https://imag.bonviveur.com/fideua-de-pescado-y-marisco.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" style="object-fit:fill" alt="">
+            <div class="product"> <img th:src="@{/images/fideua.png}"  alt="">
                 <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
-                    <a href="/dom" style="text-decoration:none; color:black;"><li class="icon"><span class="fas fa-expand-arrows-alt"></span></li></a>
+                    <a href="/main/description/1" style="text-decoration:none; color:black;"><li class="icon"><span class="fas fa-expand-arrows-alt"></span></li></a>
                     <li class="icon"><span class="fas fa-shopping-bag"></span></li>
                 </ul>
             </div>

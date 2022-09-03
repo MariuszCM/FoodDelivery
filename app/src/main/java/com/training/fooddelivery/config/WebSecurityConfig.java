@@ -35,7 +35,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationProvider(authenticationProvider)
                 .exceptionHandling()
                 .and()
-                .addFilterBefore(new HeaderUsernamePasswordAuthenticationFilter(new AntPathRequestMatcher("/login", "POST"), authenticationManager()), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new HeaderUsernamePasswordAuthenticationFilter(new AntPathRequestMatcher("/login", "POST"), authenticationManager()), UsernamePasswordAuthenticationFilter.class)
+                .logout()
+                .logoutSuccessUrl("/");
     }
 
     @Override
