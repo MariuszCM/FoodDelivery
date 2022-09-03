@@ -1,6 +1,7 @@
 package com.training.fooddelivery.service;
 
 import com.training.fooddelivery.domain.Food;
+import com.training.fooddelivery.exception.ElementNotFound;
 import com.training.fooddelivery.repository.FoodRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,5 +18,12 @@ public class DefaultFoodService implements FoodService {
     @Override
     public List<Food> listAllFood() {
         return foodRepository.findAll();
+    }
+
+    @Transactional
+    @Override
+    public Food findFoodById(Long foodId) {
+        return foodRepository.findById(foodId).
+                orElseThrow(() -> new ElementNotFound("Food " + foodId + " not found"));
     }
 }

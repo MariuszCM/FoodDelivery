@@ -16,27 +16,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/login")
 public class LoginController {
     private CustomerRepository customerRepository;
 
     public LoginController(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
-
-    @PostMapping
-    public String login(Model model) {
-        Customer customer = getAuthenticatedCustomer();
-        model.addAttribute("userName", customer.getName());
-        model.addAttribute("userBalance", customer.getBalance());
-        return "startPage";
+    @PostMapping(value = "/login")
+    public String login() {
+        return "loginPost";
     }
-
-    @GetMapping
+    @GetMapping(value = "/login")
     @ResponseBody
     public String getId(HttpSession session) {
         Object id = session.getAttribute("id");
         return id.toString();
+    }
+
+    @GetMapping(value = "/main")
+    public String main(Model model) {
+        Customer customer = getAuthenticatedCustomer();
+        model.addAttribute("userName", customer.getName());
+        model.addAttribute("userBalance", customer.getBalance());
+        return "startPage";
     }
 
     private Customer getAuthenticatedCustomer() {

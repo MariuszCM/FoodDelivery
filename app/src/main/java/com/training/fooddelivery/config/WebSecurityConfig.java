@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().disable()
                 .authorizeRequests()
                 .antMatchers("/h2-console/**", "/swagger-ui/", "/login").permitAll()
-                .antMatchers("/foodservice/**", "/orderservice/**").authenticated()
+                .antMatchers("/foodservice/**", "/orderservice/**", "/main").authenticated()
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .exceptionHandling()

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface FoodService {
     List<Food> listAllFood();
+    Food findFoodById(Long foodId);
 }
