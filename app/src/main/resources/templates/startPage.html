@@ -17,12 +17,15 @@
 
  <main>
 <!-- DEMO HTML -->
+     <div style="position: absolute; top: 15px; right: 200px; width: 100px; text-align:right;">
+         Balance:&nbsp;&#x24;<span th:text="${userBalance}"></span>
+     </div>
 <div class="container bg-white">
     <nav class="navbar navbar-expand-md navbar-light bg-white">
         <div class="container-fluid p-0"> <a class="navbar-brand text-uppercase fw-800" href="#"><span th:text="Hello " class="border-red pe-2"></span><span th:text="${userName}" class="border-red pe-2"></span></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNav" aria-controls="myNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button>
 
             <div class="collapse navbar-collapse" id="myNav">
-                <div class="navbar-nav ms-auto"> <a class="nav-link active" aria-current="page" href="#">Dishes</a> <a class="nav-link" href="/foodservice/foods">Description</a> <a class="nav-link" href="#">My orders</a> <a class="nav-link" href="#">My profile</a> <a class="nav-link" href="#">Contact</a> </div>
+                <div class="navbar-nav ms-auto"> <a class="nav-link active" aria-current="page" href="#">Dishes</a> <a class="nav-link" href="/foodservice/foods">Description</a> <a class="nav-link" href="/orderservice/orders">My orders</a> <a class="nav-link" href="#">My profile</a> <a class="nav-link" href="#">Contact</a> </div>
             </div>
         </div>
     </nav>

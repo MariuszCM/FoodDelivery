@@ -1,5 +1,6 @@
 package com.training.fooddelivery.controller;
 
+import com.training.fooddelivery.domain.Customer;
 import com.training.fooddelivery.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -17,7 +18,6 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-    @Autowired
     private CustomerRepository customerRepository;
 
     public LoginController(CustomerRepository customerRepository) {
@@ -25,9 +25,10 @@ public class LoginController {
     }
 
     @PostMapping
-    //@ResponseBody
     public String login(Model model) {
-        model.addAttribute("userName", getAuthenticatedCustomersName());
+        Customer customer = getAuthenticatedCustomer();
+        model.addAttribute("userName", customer.getName());
+        model.addAttribute("userBalance", customer.getBalance());
         return "startPage";
     }
 
@@ -38,11 +39,10 @@ public class LoginController {
         return id.toString();
     }
 
-    private String getAuthenticatedCustomersName() {
+    private Customer getAuthenticatedCustomer() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String customerEmail = userDetails.getUsername();
-        String name = customerRepository.findCustomerByEmail(customerEmail).get().getName();
-        return name;
+        return customerRepository.findCustomerByEmail(customerEmail).get();
     }
 }
