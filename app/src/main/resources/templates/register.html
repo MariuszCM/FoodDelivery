@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
+  <link rel="stylesheet"  href="index/style.css">
+  <link rel="stylesheet" type="text/css" th:href="@{/register/style.css}"/>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="login-form">
+  <form action="/register" method="post">
+    <h1>Register</h1>
+    <div class="content">
+      <div class="input-field">
+        <input name="name" placeholder="Name" class="form-item">
+      </div>
+      <div class="input-field">
+        <input name="email" placeholder="Email" class="form-item">
+      </div>
+      <div class="input-field">
+        <input name="password" placeholder="Password" type="password" class="form-item">
+      </div>
+      <div class="input-field">
+        <input name="balance" placeholder="Balance" type="password" class="form-item">
+      </div>
+    <div class="action">
+      <button type="submit" class="form-item">Create account!</button>
+    </div>
+  </form>
+</div>
+<!-- partial -->
+  <script  src="register/script.js"></script>
+
+</body>
+</html>

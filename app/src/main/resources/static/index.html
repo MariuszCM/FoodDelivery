@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Logowanie</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
+  <link rel="stylesheet"  href="index/style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="login-form">
+  <form action="/login" method="post">
+    <h1>Login</h1>
+    <div  class="content">
+      <div class="input-field">
+        <input name="username" placeholder="Email" class="form-item">
+      </div>
+      <div class="input-field">
+        <input name="password" placeholder="Password" type="password" class="form-item">
+      </div>
+      <a href="/register" class="link">Forgot Your Password?</a>
+    </div>
+    <div class="action">
+      <button><a id="register" href="/register">Register</a></button>
+      <button type="submit" class="form-item">Log in!</button>
+    </div>
+  </form>
+</div>
+<!-- partial -->
+  <script  src="index/script.js"></script>
+
+</body>
+</html>
