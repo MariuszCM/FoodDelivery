@@ -23,9 +23,13 @@
             Balance:&nbsp;&#x24;<span th:text="${userBalance}"></span>
         </div>
         <div class="container-fluid p-0"> <a class="navbar-brand text-uppercase fw-800" href="/main"><span th:text="Hello " class="border-red pe-2"></span><span th:text="${userName}" class="border-red pe-2"></span></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNav" aria-controls="myNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button>
-
+            <div>
+                <a href="/main">
+                    <img style = "position:relative; left:150px; top:0;" th:src="@{/images/logo.png}" />
+                </a>
+            </div>
             <div class="collapse navbar-collapse" id="myNav">
-                <div class="navbar-nav ms-auto"> <a class="nav-link active" aria-current="page" href="/main">Menu</a><a class="nav-link" href="/orderservice/orders">My orders</a> <a class="nav-link" href="#">My profile</a> <a class="nav-link" href="#">Contact</a> </div>
+                <div class="navbar-nav ms-auto"> <a class="nav-link" aria-current="page" href="/main">Menu</a><a class="nav-link" href="/orderservice/orders">My orders</a> <a class="nav-link" href="#">My profile</a> <a class="nav-link" href="#">Contact</a><a class="nav-link" href="/logout">Log out</a> </div>
             </div>
         </div>
     </nav>
@@ -42,7 +46,7 @@
 <!-- EMD DEMO HTML -->
  </main>
  
-  <footer class="credit">Author: Jaroslaw Koszela By: <a title="Awesome web design code & scripts" href="https://www.codehim.com?source=demo-page" target="_blank">CodeHim</a></footer>
+  <footer class="credit">Author: Mariusz Celinski-Myslaw By: <a title="" href="https://github.com/MariuszCM" target="_blank">CodeHim</a></footer>
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
